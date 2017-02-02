@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<!-- Basic Page Needs
+	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	<meta charset="utf-8">
+	<title>Minefix - Fixing what's wrong with Minecraft and Minetest</title>
+	<meta name="description" content="Minefix information site">
+	<meta name="author" content="Minefix developers">
+
+	<!-- Mobile Specific Metas
+	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- CSS
+	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/skeleton.css">
+	<link rel="stylesheet" href="css/app.css">
+
+	<!-- Favicon
+	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	<link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
+<body>
+
+	<!-- Primary Page Layout
+	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	<div class="container">
+		<header>
+			<div class="row">
+				<div class="twelve columns">
+					<h3 class="center">Minefix</h3>
+					<p class="center">Fixing what's wrong with <a href="https://minecraft.net">Minecraft</a> and <a href="http://minetest.net">Minetest</a></p>
+				</div>
+			</div>
+		</header>
+		<div id="content">
+			<div class="row">
+				<div class="twelve columns">
+					<p>
+						Minefix is a project that aims to fix the "issues" with both <a href="#minecraft">Minecraft</a> and <a href="#minetest">Minetest</a> by adding Minecraft content to a Minetest subgame.
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="twelve columns">
+					<h4>The reasons for making Minefix</h4>
+					<a id="minecraft"></a>
+					<p>
+						<b>Wait, what is wrong with Minecraft?</b><br />
+						Minecraft has several issues, the biggest being that it's a proprietary product owned by Microsoft.<br />
+						<a href="https://www.gnu.org/philosophy/free-sw.html">Software should respect the users four basic freedoms</a>, which Minecraft obviously does not.<br />
+						Minetest is licensed under the GNU Lesser General Public License which means it's free software.<br />
+						Minefix itself is licensed under the GNU Affero General Public License 3, unless explicitely stated otherwise in the source.
+					</p>
+					<p>
+						Furthermore the Minecraft developers have promised a modding API as far back as <a href="http://minecraft.gamepedia.com/Add-on#History">July 5, 2010</a>.<br />
+						However, till this day there has been no such thing. Currently only the Pocket edition (which only runs on Windows 10, mobile, Gear VR, Apple TV, and Fire TV) support a version of this API, and it only supports changing the behaviour of mobs. <br />
+						Since this project uses Minetest as a base, the modding API is extensive and well documented. With modding being it's primary goal, this will always be the case. Because mods are written in Lua, they will always be open and have the source code available for the user.
+					</p>
+					<p>
+						Lastly, Minecraft (the desktop version) is written in Java. While there are rumours of plans of rewriting it in C++, this has not happened yet.<br />
+						Being written in Java means performance is less then optimal and doesn't use any lower level functions to optimize performance per platform. Since Minetest is written in C++ from the start, this issue is not present.
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="twelve columns">
+					<a id="minetest"></a>
+					<p>
+						<b>Wait, what is wrong with Minetest?</b><br />
+						Sadly the focus of Minetest isn't being a perfect Minecraft clone. The base game contains blocks and items Minecraft does not have, and vice-versa. This means the game is not of interest of most Minecraft players, meaning they are stuck with the proprietary alternative.<br />
+						Minetest also thinks mobile is a big priority, which goes as far as not implementing features if they only work on PC. While good to have mobile support, this prevents several features from being added which could've been really good and fun for the game.
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="twelve columns">
+					<p>
+						<b>Ok, so what does Minefix do to fix this?</b><br />
+						Minefix tries to implement all features, blocks and items from Minecraft in Minetest. We try to do this as close as possible to the original game. The goal is to have the user not notice that he or she is actually running a different program gameplay wise. Non-Minecraft blocks and items are removed, and those missing are added.<br />
+						Note that we only re-implement the base game, we do not touch the core. We might look into doing this if needed later on, but it's not a priority. We're also not trying to stay compatible with currently existing Minetest mods.
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="twelve columns">
+					<h4>Blockers</h4>
+					<p>
+						Due to a few technical limitations, it currently is not (yet) possible to recreate <em>everything</em> in Minetest.<br />
+						The most notable blockers are:
+					</p>
+					<ol>
+						<li>Mods can not listen to keypresses. <a href="https://github.com/minetest/minetest/pull/5088">Client-side modding</a> could potentionally (hopefully) fix this in the future</li>
+						<li>It's not possible to create separate dimensions. New "dimensions" have to be added to the main world</li>
+						<li>There is no API for mobs yet. There are workarounds by using other mods, but this is an approach we rather not take</li>
+					</ol>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="twelve columns">
+					<h4>Download</h4>
+					<p>
+						Currently we do not have a release yet, so you'll have to download the latest version from Git. You can get a .zip file from <a href="https://github.com/avamander/minefix/archive/master.zip">here</a> or you can use Git to clone the directory from <a href="https://github.com/avamander/minefix">https://github.com/avamander/minefix.git</a>.
+					</p>
+					<p>
+						<b>Installation instructions without Git</b><br />
+						Unzip the downloaded archive to <code>~/.minetest/games/minefix</code>. If the folder <code>minefix</code> does not yet exist, create it. <br />
+						When creating a new world, select the "Minefix" minigame.
+					</p>
+					<p>
+						<b>Installation instructions with Git</b><br />
+						You'll need the Git client installed.<br />
+						To get the latest version run <code>git clone https://github.com/avamander/minefix</code>. To later on update just run <code>git pull</code> in the directory you just cloned. Move, copy or symlink the cloned folder to <code>~/.minetest/games/</code>.<br/>
+						When creating a new world, select the "Minefix" minigame.
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<footer>
+			<div class="row">
+				<div class="twelve columns center">
+					<p>
+						This website is powered by <a href="http://getskeleton.com">Skeleton</a>, a dead simple, responsive boilerplate.
+					</p>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+	<!-- End Document
+	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
