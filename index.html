@@ -5,7 +5,7 @@
 	<!-- Basic Page Needs
 	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 	<meta charset="utf-8">
-	<title>Minefix - Fixing what's wrong with Minecraft and Minetest</title>
+	<title>Minefix - Recreating Minecraft in Minetest</title>
 	<meta name="description" content="Minefix information site">
 	<meta name="author" content="Minefix developers">
 
@@ -33,7 +33,7 @@
 			<div class="row">
 				<div class="twelve columns">
 					<h3 class="center">Minefix</h3>
-					<p class="center">Fixing what's wrong with <a href="https://minecraft.net">Minecraft</a> and <a href="http://minetest.net">Minetest</a></p>
+					<p class="center">Recreating <a href="https://minecraft.net">Minecraft</a> in <a href="http://minetest.net">Minetest</a></p>
 				</div>
 			</div>
 		</header>
@@ -41,7 +41,7 @@
 			<div class="row">
 				<div class="twelve columns">
 					<p>
-						Minefix is a project that aims to fix the "issues" with both <a href="#minecraft">Minecraft</a> and <a href="#minetest">Minetest</a> by adding Minecraft content to a Minetest subgame.
+						Minefix is a project that aims to recreate <a href="#minecraft">Minecraft</a> in <a href="#minetest">Minetest</a>, as close as possible, so we can play the game without proprietary software and relying on a software company to not ruin the game.
 					</p>
 				</div>
 			</div>
@@ -53,17 +53,17 @@
 						<b>Wait, what is wrong with Minecraft?</b><br />
 						Minecraft has several issues, the biggest being that it's a proprietary product owned by Microsoft.<br />
 						<a href="https://www.gnu.org/philosophy/free-sw.html">Software should respect the users four basic freedoms</a>, which Minecraft obviously does not.<br />
-						Minetest is licensed under the GNU Lesser General Public License which means it's free software.<br />
+						Minetest is licensed under the GNU Lesser General Public License 2 which means it's free software.<br />
 						Minefix itself is licensed under the GNU Affero General Public License 3, unless explicitely stated otherwise in the source.
 					</p>
 					<p>
 						Furthermore the Minecraft developers have promised a modding API as far back as <a href="http://minecraft.gamepedia.com/Add-on#History">July 5, 2010</a>.<br />
-						However, till this day there has been no such thing. Currently only the Pocket edition (which only runs on Windows 10, mobile, Gear VR, Apple TV, and Fire TV) support a version of this API, and it only supports changing the behaviour of mobs. <br />
+						However, till this day there has been no such thing. Currently only the Pocket edition (which only runs on Windows 10, mobile, Gear VR, Apple TV, and Fire TV) support a version of this API. <br />
 						Since this project uses Minetest as a base, the modding API is extensive and well documented. With modding being it's primary goal, this will always be the case. Because mods are written in Lua, they will always be open and have the source code available for the user.
 					</p>
 					<p>
 						Lastly, Minecraft (the desktop version) is written in Java. While there are rumours of plans of rewriting it in C++, this has not happened yet.<br />
-						Being written in Java means performance is less then optimal and doesn't use any lower level functions to optimize performance per platform. Since Minetest is written in C++ from the start, this issue is not present.
+						Being written in Java means performance is less than optimal and doesn't use any lower level functions to optimize performance per platform. Since Minetest is written in C++ from the start, this issue is not present.
 					</p>
 				</div>
 			</div>
@@ -72,7 +72,7 @@
 					<a id="minetest"></a>
 					<p>
 						<b>Wait, what is wrong with Minetest?</b><br />
-						Sadly the focus of Minetest isn't being a perfect Minecraft clone. The base game contains blocks and items Minecraft does not have, and vice-versa. This means the game is not of interest of most Minecraft players, meaning they are stuck with the proprietary alternative.<br />
+						Sadly the focus of Minetest isn't being a perfect Minecraft clone. The base game contains blocks and items Minecraft does not have, and vice-versa. This means the game is not of interest to most Minecraft players, which means they are stuck with the proprietary alternative.<br />
 						Minetest also thinks mobile is a big priority, which goes as far as not implementing features if they only work on PC. While good to have mobile support, this prevents several features from being added which could've been really good and fun for the game.
 					</p>
 				</div>
@@ -82,7 +82,7 @@
 					<p>
 						<b>Ok, so what does Minefix do to fix this?</b><br />
 						Minefix tries to implement all features, blocks and items from Minecraft in Minetest. We try to do this as close as possible to the original game. The goal is to have the user not notice that he or she is actually running a different program gameplay wise. Non-Minecraft blocks and items are removed, and those missing are added.<br />
-						Note that we only re-implement the base game, we do not touch the core. We might look into doing this if needed later on, but it's not a priority. We're also not trying to stay compatible with currently existing Minetest mods.
+						Note that we only re-implement the base game using a subgame, we do not touch the Minetest core. We might look into doing this if needed later on, but it's not a priority. We're also <i>not</i> trying to stay compatible with currently existing Minetest mods.
 					</p>
 				</div>
 			</div>
@@ -95,7 +95,7 @@
 						The most notable blockers are:
 					</p>
 					<ol>
-						<li>Mods can not listen to keypresses. <a href="https://github.com/minetest/minetest/pull/5088">Client-side modding</a> could potentionally (hopefully) fix this in the future</li>
+						<li>Mods can not listen to keypresses. <a href="https://github.com/minetest/minetest/pull/5088">Client-side modding</a> seemed promising, but ended up being implemented differently than we needed</li>
 						<li>It's not possible to create separate dimensions. New "dimensions" have to be added to the main world</li>
 						<li>There is no API for mobs yet. There are workarounds by using other mods, but this is an approach we rather not take</li>
 					</ol>
@@ -119,6 +119,19 @@
 						To get the latest version run <code>git clone https://github.com/Minefix/minefix</code>. To later on update just run <code>git pull</code> in the directory you just cloned. Move, copy or symlink the cloned folder to <code>~/.minetest/games/</code>.<br/>
 						When creating a new world, select the "Minefix" minigame.
 					</p>
+					<p>
+						<b>Getting your Minecraft textures to work with Minefix</b><br />
+						The repository contains a converter script, which takes textures from your Minecraft installation and converts them to Minefix compatible ones.<br />
+						Right now it only runs on Linux and BSD's, but we're in the process of creating a script written in Python, which should work on more platforms.
+					</p>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="twelve columns">
+					<h4>Screenshots</h4>
+					<img alt="Some implemented blocks" src="https://raw.githubusercontent.com/Minefix/MineFix/master/promo/Minefix%201.png" />
+					<img alt="Creative inventory" src="https://raw.githubusercontent.com/Minefix/MineFix/master/promo/Minefix%202.png" />
 				</div>
 			</div>
 		</div>
@@ -138,3 +151,4 @@
 	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
 </html>
+
