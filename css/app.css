@@ -5,3 +5,7 @@
 header {
 	margin-top: 5%;
 }
+
+img {
+	max-width: 100%;
+}
